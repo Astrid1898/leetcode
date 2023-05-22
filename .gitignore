@@ -1,1 +1,7 @@
-/bin
+/*
+!/leetcode
+!/**/*.cpp
+!.gitignore
+!README.md
+!**/*.c
+**/*.lcv
