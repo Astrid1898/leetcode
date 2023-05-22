@@ -1,7 +1,7 @@
-*
-!**.cpp
+/*
+!/leetcode
+!/**/*.cpp
 !.gitignore
 !README.md
-!*.c
-!./leetcode
-*.lcv
+!**/*.c
+**/*.lcv
