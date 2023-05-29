@@ -70,7 +70,35 @@ class Solution
 public:
     TreeNode *buildTree(vector<int> &inorder, vector<int> &postorder)
     {
+        if(postorder.size()==0)
+            return nullptr;
+        TreeNode* root=new TreeNode(postorder[postorder.size()-1]);
+        stack<TreeNode*> s;
+        s.push(root);
+        int index=inorder.size()-1;
+        for(int i=postorder.size()-2;i>=0;i--)
+        {
+            int postorderVal=postorder[i];
+            TreeNode* node=s.top();
+            if(node->val!=inorder[index])
+            {
+                node->right=new TreeNode(postorderVal);
+                s.push(node->right);
+            }
+            else
+            {
+                while(!s.empty()&&s.top()->val==inorder[index])
+                {
+                    node=s.top();
+                    s.pop();
+                    index--;
+                }
+                node->left=new TreeNode(postorderVal);
+                s.push(node->left);
+            }
+        }
 
+        return root;
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)
